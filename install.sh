@@ -10,6 +10,7 @@ sudo apt install gh git wget firefox
 pip3 install -r ./requirements.txt
 
 echo Copying files
+mkdir ~/.creatify
 cp ./bin/{configure.sh,Creatify-GithubCLI.sh,Creatify-WebScraping.sh,creatify,webtemplate.sh,create.py} ~/.creatify/
 
 echo export PATH=$PATH:~/.creatify >> ~/.bashrc
