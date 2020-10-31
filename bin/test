@@ -12,7 +12,9 @@ else
         [[ $x != 0 && $i != 0 ]] && main_dir="$main_dir/${ADDR[i]}" || :
     done
 fi
+# [[ -e "$main_dir/creatify" ]] && : || main_dir="$PWD$main_dir"
 
-[[ -e "$main_dir/creatify" ]] && : || main_dir="$PWD$main_dir"
+cli_based_creatify="$main_dir/Webscraping-based_Creatify/creatify"
 
-bash "$main_dir/configure.sh" "firstTimeUsed"
+
+cp "$cli_based_creatify" "$main_dir"

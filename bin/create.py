@@ -32,7 +32,7 @@ uid_log.send_keys(uid)
 pass_log.send_keys(password)
 driver.find_element_by_xpath('//*[@id="login"]/form/div[4]/input[12]').click()
 
-driver.find_element_by_xpath('//*[@id="repos-container"]/h2/a').click()
+driver.find_element_by_xpath('/html/body/div[4]/div/aside[1]/div[2]/div[1]/div/h2/a').click()
 
 repo_title = driver.find_element_by_xpath('//*[@id="repository_name"]')
 repo_title.send_keys(sys.argv[1])

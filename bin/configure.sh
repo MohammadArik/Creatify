@@ -16,8 +16,8 @@ fi
 
 github_file="$main_dir/github.pyc"
 path_file="$main_dir/paths.sh"
-cli_based_creatify="$main_dir/Creatify-GithubCLI.sh"
-selenium_based_creatify="$main_dir/Creatify-WebScraping.sh"
+cli_based_creatify="$main_dir/GithubCLI-based_Creatify/creatify"
+selenium_based_creatify="$main_dir/Webscraping-based_Creatify/creatify"
 main_creatify="$main_dir/creatify"
 
 
@@ -44,28 +44,25 @@ function configCLI(){
             rm "$main_creatify"
         fi
         touch "$main_creatify"
-        while read line; do
-            echo "$line" >> "$main_creatify"
-        done < "$selenium_based_creatify"
+        cp "$selenium_based_creatify" "$main_dir"
         ;;
     [nN] | [nN][oO])
-        
+        echo "You need to configure the CLI if not done yet"
+        gh auth login
         if [[ -e "$main_creatify" ]]
         then
             rm "$main_creatify"
         fi
-        touch "$main_creatify"
-        while read line; do
-            echo "$line" >> "$main_creatify"
-        done < "$cli_based_creatify"
+        cp "$cli_based_creatify" "$main_dir"
+        
         ;;
     *)
         echo "Please enter y/yes or n/no"
         configCLI
         ;;
     esac
-    echo "You need to configure the CLI if not done yet"
-    gh auth login
+    chmod u+x "$main_creatify"
+    
 }
 
 function configPath(){

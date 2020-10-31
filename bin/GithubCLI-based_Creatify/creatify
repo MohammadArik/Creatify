@@ -17,7 +17,7 @@ fi
 
 path_file="$main_dir/paths.sh"
 config_file="$main_dir/configure.sh"
-gitignore_file="$main_dir/.gitignore"
+gitignore_file="$main_dir/gitignoreTexts.txt"
 webtemplate_file="$main_dir/webtemplate.sh"
 
 [[ -e "$path_file" ]] && : || `bash "$config_file" "path"`
@@ -111,14 +111,14 @@ function createProject(){
             
             if [[ $pname == "" ]]
             then
-                flutter create $title > /dev/null 2>&1
+                flutter create $title 
             else
-                flutter create --org $pname $title > /dev/null 2>&1
+                flutter create --org $pname $title 
             fi
             cd "./$title"
             gh repo create "$title" -y
-            cp -r "./$title/.git" ./
-            rm -r "./$title"
+            cp -r "./$title/.git" ./ > /dev/null 2>&1
+            rm -r "./$title" > /dev/null 2>&1
             touch "README.md"
             git add .
             git commit -m"Initial Commit" > /dev/null 2>&1
@@ -160,8 +160,8 @@ function createProject(){
             fi
             if [[ $lang == "node" ]]; then
                 gh repo create "$title" -y
-                cp -r "./$title/.git" ./
-                rm -r "./$title"
+                cp -r "./$title/.git" ./ > /dev/null 2>&1
+                rm -r "./$title" > /dev/null 2>&1
             else
                 title=""
                 x=0
@@ -176,8 +176,8 @@ function createProject(){
                     x=$(( x+1 ))
                 done
                 gh repo create "$title" -y
-                cp -r "./$title/.git" ./
-                rm -r "./$title"
+                cp -r "./$title/.git" ./ > /dev/null 2>&1
+                rm -r "./$title" > /dev/null 2>&1
             fi
             touch "README.md"
             git add . > /dev/null 2>&1
