@@ -15,12 +15,12 @@ fi
 [[ -e "$main_dir/creatify" ]] && : || main_dir="$PWD$main_dir"
 
 
-path_file="$main_dir/paths.sh"
+creds_file="$main_dir/creds.sh"
 config_file="$main_dir/configure.sh"
 gitignore_file="$main_dir/gitignoreTexts.txt"
 webtemplate_file="$main_dir/webtemplate.sh"
 
-[[ -e "$path_file" ]] && : || `bash "$config_file" "path"`
+[[ -e "$creds_file" ]] && : || `bash "$config_file" "credsFile"`
 [[ -e "$gitignore_file" ]] && : || echo "Gitignore file will Not be given as a file is missing...."
 
 
@@ -40,7 +40,7 @@ while getopts ":l:e:p" o; do
         l) lang=${OPTARG};;
         e) ide=${OPTARG};;
         p)  
-            . "$path_file"
+            . "$creds_file"
 
             declare -a pathName
             pathName=( "'Python' projects" "'Flutter' projects" "'Web' projects" "'Node.js' projects" "Default Directory" )
@@ -214,16 +214,17 @@ else
     fi
 fi
 
+. "$creds_file"
 
-[[ $ide == "" ]] && ide="code" || :
+if [[ $ide == "" ]]
+then
+    eval "ide=\$$editor"
+fi
 
-[[ $lang == "" ]] && lang="default" || :
-
-. "$path_file"
 eval "path=\$$lang"
 
 
-if [[ $path == "" ]]
+if [[ $path == "0" ]]
 then
     echo "Path for $lang projects was not given while configuring Creatify."
     echo "run \"creatify --config path\" to configure paths again.."
