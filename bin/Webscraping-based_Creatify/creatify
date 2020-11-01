@@ -150,6 +150,13 @@ function createProject(){
                 cd "./$title"
                 npm init -y
                 gitIgnore $lang
+                if [[ -e "$webtemplate_file" ]]
+                then
+                    webTemplate "$title" "$path"
+                    echo "Creatify creates a template on every web project creation... Hope you like it.."
+                else
+                    echo "Web template will not be given as a file is missing...."
+                fi
             elif [[ $lang == "web" ]]
             then
                 mkdir "$name"
