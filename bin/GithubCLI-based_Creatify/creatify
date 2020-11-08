@@ -108,6 +108,12 @@ function createProject(){
             [[ "${#ADDR[@]}" -gt 1 ]] && (printf "Your Project name would be '$title' instead of '$name'. Cause Flutter project name cannot contain space. \nBut you can change the name of the directory later...\n") || :
             echo "Creating a $lang project named $title"
             read -p "Package Name for your flutter app: " pname
+
+            if [[ ${title} != ${title,,} ]]
+            then
+                echo "Flutter doesn't support app name with any uppercase character. So your directory name will be ${title,,} instead of ${title}."
+                title=${title,,}
+            fi
             
             if [[ $pname == "" ]]
             then

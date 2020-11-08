@@ -108,9 +108,15 @@ function createProject(){
             echo "Creating a $lang project named $title"
             read -p "Package Name for your flutter app: " pname
             
+            if [[ ${title} != ${title,,} ]]
+            then
+                echo "Flutter doesn't support app name with any uppercase character. So your directory name will be ${title,,} instead of ${title}."
+                title=${title,,}
+            fi
+
             if [[ $pname == "" ]]
             then
-                flutter create $title 
+                flutter create ${title}
             else
                 flutter create --org $pname $title 
             fi
