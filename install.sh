@@ -5,7 +5,7 @@ mkdir ~/.creatify
 cp -r bin/* ~/.creatify/
 
 
-echo export PATH=$PATH:~/.creatify >> ~/.bashrc
+echo "export PATH=\$PATH:~/.creatify" >> ~/.bashrc
 
 chmod u+x ~/.creatify/creatify
 
