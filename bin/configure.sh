@@ -73,7 +73,6 @@ function configCLI(){
         ;;
     [nN] | [nN][oO])
         echo "You need to configure the CLI if not done yet"
-        gh auth login
         if [[ -e "$main_creatify" ]]
         then
             rm "$main_creatify"
@@ -97,6 +96,7 @@ function configCLI(){
             eval "$i=0"
             ;;
         esac
+        gh auth login
         ;;
     *)
         echo "Please enter y/yes or n/no"
