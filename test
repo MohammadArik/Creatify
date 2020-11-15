@@ -1,0 +1,15 @@
+#!/bin/bash
+
+blabla
+
+
+function CreatifyPathSystem(){ 
+	. ~/.creatify/creds.sh 
+	eval "path=\$$1" 
+	cd  
+}
+
+export python="CreatifyPathSystem python" 
+export flutter="CreatifyPathSystem flutter" 
+export web="CreatifyPathSystem web" 
+export node="CreatifyPathSystem node" 
