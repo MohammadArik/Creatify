@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# echo "Copying files"
-# mkdir ~/.creatify
-# cp -r bin/* ~/.creatify/
+echo "Copying files"
+mkdir ~/.creatify
+cp -r bin/* ~/.creatify/
 
 read -p "Do you want to install Creatify Path System? (y/n) " ANSWER
 case "$ANSWER" in 
