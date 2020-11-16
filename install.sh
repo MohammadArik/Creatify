@@ -7,7 +7,7 @@
 read -p "Do you want to install Creatify Path System? (y/n) " ANSWER
 case "$ANSWER" in 
 [yY] | [yY][eE][sS])
-    printf "\nfunction CreatifyPathSystem(){ \n\t. ~/.creatify/creds.sh \n\teval \"path=\\\$\$1\" \n\tcd \"\$path\" \n}\n\nexport python=\"CreatifyPathSystem python\" \nexport flutter=\"CreatifyPathSystem flutter\" \nexport web=\"CreatifyPathSystem web\" \nexport node=\"CreatifyPathSystem node\" \n" >> ~/.bashrc
+    printf "\nfunction CreatifyPathSystem(){ \n\t. ~/.creatify/creds.sh \n\teval \"path=\\\$\$1\" \n\tcd \"\$path\" \n}\n\nexport pythonx=\"CreatifyPathSystem python\" \nexport flutterx=\"CreatifyPathSystem flutter\" \nexport webx=\"CreatifyPathSystem web\" \nexport nodex=\"CreatifyPathSystem node\" \n" >> ~/.bashrc
     ;;
 [nN] | [nN][oO])
     echo "You will have to install creatify again if you want to install Creatify Path System."
